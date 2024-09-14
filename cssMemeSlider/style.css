@@ -34,16 +34,25 @@ p {
 
 .navigation {
     display: flex;
-    gap: 1vw;
 }
 
 .bar {
-    width: 1vw;
-    height: 1vw;
-    border-radius: 50%;
-    background-color: blue;
-    border: 0.2vw solid blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    padding: 1vw;
+}
+
+.bar span {
+    display: block;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    border: 0.5vw solid blue;
+    background-color: blue;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 input[name="r"] {
@@ -51,18 +60,21 @@ input[name="r"] {
 }
 
 /* Стиль активных кнопок */
-#r1:checked~.slides .navigation>:nth-child(1),
-#r2:checked~.slides .navigation>:nth-child(2),
-#r3:checked~.slides .navigation>:nth-child(3),
-#r4:checked~.slides .navigation>:nth-child(4) {
+#r1:checked~.slides .navigation>:nth-child(1) span,
+#r2:checked~.slides .navigation>:nth-child(2) span,
+#r3:checked~.slides .navigation>:nth-child(3) span,
+#r4:checked~.slides .navigation>:nth-child(4) span {
     background-color: #33312e;
 }
 
 @media (hover:hover) {
-    .bar:hover {
+    .bar span {
+        transition: all 0.3s ease-in-out;
+    }
+
+    .bar:hover span {
         background-color: aliceblue;
         border-color: aliceblue;
-        transition: all 0.4s ease-in-out;
     }
 }
 
