@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #33312e;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+p {
+    color: aliceblue;
+    font-size: 2vw;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    transition: opacity 0.7s ease-in;
+}
+
+.navigation {
+    display: flex;
+}
+
+.bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 1vw;
+}
+
+.bar span {
+    display: block;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    border: 0.5vw solid blue;
+    background-color: blue;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[name="r"] {
+    display: none;
+}
+
+/* Стиль активных кнопок */
+#r1:checked~.slides .navigation>:nth-child(1) span,
+#r2:checked~.slides .navigation>:nth-child(2) span,
+#r3:checked~.slides .navigation>:nth-child(3) span,
+#r4:checked~.slides .navigation>:nth-child(4) span {
+    background-color: #33312e;
+}
+
+@media (hover:hover) {
+    .bar span {
+        transition: all 0.3s ease-in-out;
+    }
+
+    .bar:hover span {
+        background-color: aliceblue;
+        border-color: aliceblue;
+    }
+}
+
+/* Слайдер картинок */
+#r1:checked~.slides img, #r1:checked~.slides p {
+    margin-left: 0;
+}
+
+#r2:checked~.slides img {
+    margin-left: -100%;
+}
+
+#r3:checked~.slides img {
+    margin-left: -200%;
+}
+
+#r4:checked~.slides img {
+    margin-left: -300%;
+}
+
+/* Слайдер текста */
+#r1:checked~.slides .text>:nth-child(1),
+#r2:checked~.slides .text>:nth-child(2),
+#r3:checked~.slides .text>:nth-child(3),
+#r4:checked~.slides .text>:nth-child(4) {
+    opacity: 1;
+    visibility: visible;
+    max-height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all 0.6s ease-in-out;
+    background-color: white;
+}
+
+.slider {
+    width: 55%;
+    overflow: hidden;
+    margin: auto;
+}
+
+.slides {
+    width: 400%;
+    display: flex;
+    transition: all .6s ease-in-out;
+}
+
+.slide {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+@media(max-width: 768px) {
+    .text-nav {
+        flex-direction: column-reverse;
+        gap: 2vw;
+        align-items: start;
+    }
+
+    .slider {
+        width: 70%;
+    }
+
+    .navigation {
+        align-self: center;
+    }
+}
