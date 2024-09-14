@@ -25,7 +25,7 @@ body {
 
 p {
     color: aliceblue;
-    font-size: 20px;
+    font-size: 2vw;
     opacity: 0;
     visibility: hidden;
     max-height: 0;
@@ -34,65 +34,61 @@ p {
 
 .navigation {
     display: flex;
+    gap: 1vw;
 }
 
 .bar {
-    width: 25px;
-    height: 25px;
+    width: 1vw;
+    height: 1vw;
     border-radius: 50%;
     background-color: blue;
-    border: 7px solid #33312e;
+    border: 0.2vw solid blue;
     cursor: pointer;
-}
-
-.bar:hover {
-    background-color: aliceblue;
-    transition: all 0.4s ease-in-out;
 }
 
 input[name="r"] {
     display: none;
 }
 
-#r1:checked~.slides img, #r1:checked~.slides p {
-    margin-left: 0;
+/* Стиль активных кнопок */
+#r1:checked~.slides .navigation>:nth-child(1),
+#r2:checked~.slides .navigation>:nth-child(2),
+#r3:checked~.slides .navigation>:nth-child(3),
+#r4:checked~.slides .navigation>:nth-child(4) {
+    background-color: #33312e;
 }
 
-#r1:checked~.slides .text>:nth-child(1) {
-    opacity: 1;
-    visibility: visible;
-    max-height: 100%;
+.bar:hover {
+    background-color: aliceblue;
+    border-color: aliceblue;
+    transition: all 0.4s ease-in-out;
+}
+
+/* Слайдер картинок */
+#r1:checked~.slides img, #r1:checked~.slides p {
+    margin-left: 0;
 }
 
 #r2:checked~.slides img {
     margin-left: -100%;
 }
 
-#r2:checked~.slides .text>:nth-child(2) {
-    opacity: 1;
-    visibility: visible;
-    max-height: 100%;
-}
-
 #r3:checked~.slides img {
     margin-left: -200%;
-}
-
-#r3:checked~.slides .text>:nth-child(3) {
-    opacity: 1;
-    visibility: visible;
-    max-height: 100%;
 }
 
 #r4:checked~.slides img {
     margin-left: -300%;
 }
 
+/* Слайдер текста */
+#r1:checked~.slides .text>:nth-child(1),
+#r2:checked~.slides .text>:nth-child(2),
+#r3:checked~.slides .text>:nth-child(3),
 #r4:checked~.slides .text>:nth-child(4) {
     opacity: 1;
     visibility: visible;
     max-height: 100%;
-
 }
 
 .slide img {
@@ -106,7 +102,7 @@ input[name="r"] {
 .slider {
     width: 55%;
     overflow: hidden;
-    margin: auto auto;
+    margin: auto;
 }
 
 .slides {
@@ -119,5 +115,21 @@ input[name="r"] {
     width: 25%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 2vw;
+}
+
+@media(max-width: 768px) {
+    .text-nav {
+        flex-direction: column-reverse;
+        gap: 2vw;
+        align-items: start;
+    }
+
+    .slider {
+        width: 70%;
+    }
+
+    .navigation {
+        align-self: center;
+    }
 }
